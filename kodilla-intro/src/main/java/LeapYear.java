@@ -5,7 +5,7 @@ public class LeapYear {
 
         System.out.print("Podaj rok: ");
         int yearToCheck = scanner.nextInt();
-        boolean isLeap = false;
+        boolean isLeap = false;q
 
             if (yearToCheck%4 == 0 && yearToCheck%100 == 0 && yearToCheck%400 == 0){
                 isLeap = true;
