@@ -13,22 +13,18 @@ public class RndMinMax {
     }
 
     public void process() {
-        int sumMax = 500;
+        int sumMax = 5000;
         int sumDrNums = 0;
-        int drawCount = 0;
         int tempDrawn = 0;
 
         RndMinMax rndMinMax = new RndMinMax();
 
+        minNumber = 31;
+        maxNumber = -1;
+
         while (sumDrNums < sumMax) {
             tempDrawn = draw();
             sumDrNums += tempDrawn;
-            drawCount++;
-
-            if (drawCount == 1) {
-                minNumber = tempDrawn;
-                maxNumber = tempDrawn;
-            }
 
             if (tempDrawn < minNumber) {
                 minNumber = tempDrawn;

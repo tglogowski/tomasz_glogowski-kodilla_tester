@@ -1,61 +1,33 @@
-public class User {
-    private String[] name;
-    private int[] age;
-    private int size;
-
-    public User() {
-        this.name = new String[5];
-        this.age = new int[5];
-        this.size = 0;
-    }
-
-    public void addUser(String name, int age ) {
-        if (this.size == 5) {
-            return;
-        }
-        this.name[this.size] = name;
-        this.age[this.size] = age;
-        this.size++;
-    }
-
-    public double calcAveAge() {
-        int sum = 0;
-
-        for (int i = 0; i < this.size; i++) {
-            sum += this.age[i];
-        }
-
-        if (this.size > 0) {
-            double aveAge = (double) sum / this.size;
-            return aveAge;
-        }
-        return 0;
-    }
-
-    public void userList(double aveAge) {
-        if (aveAge > 0) {
-            for (int i = 0; i < this.size; i++) {
-                if (this.age[i] < aveAge) {
-                    System.out.println(this.name[i]);
-                }
-            }
-        } else System.out.println("User's base is empty");
+class User {
+    private String name;
+    private int age;
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
     public static void main(String[] args) {
 
-        User user = new User();
+        User[] user = new User[5];
+        user[0] = new User("Peter", 18);
+        user[1] = new User("John", 26);
+        user[2] = new User("Jenny", 22);
+        user[3] = new User("Alice", 32);
+        user[4] = new User("Damian", 42);
 
-        user.addUser("Peter", 18);
-        user.addUser("John", 26);
-        user.addUser("Jenny", 22);
-        user.addUser("Alice", 32);
-        user.addUser("Damian", 42);
-        user.addUser("Linda", 23);
-        user.addUser("Emily", 25);
-        user.addUser("Harry", 29);
-        user.addUser("Lisa", 33);
+        int sum = 0;
+        //System.out.println(user.length);
+        if (user.length > 0) {
+            for (int i = 0; i < user.length; i++) {
+                sum += user[i].age;
+            }
+            double aveAge = (double) sum / user.length;
 
-        user.userList(user.calcAveAge());
+            for (int j = 0; j < user.length; j++) {
+                if (user[j].age < aveAge) {
+                    System.out.println(user[j].name);
+                }
+            }
+        }
     }
 }
