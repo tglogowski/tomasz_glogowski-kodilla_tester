@@ -16,7 +16,7 @@ class User {
         user[4] = new User("Damian", 42);
 
         int sum = 0;
-        //System.out.println(user.length);
+
         if (user.length > 0) {
             for (int i = 0; i < user.length; i++) {
                 sum += user[i].age;
