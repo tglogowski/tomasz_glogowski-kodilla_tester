@@ -1,20 +1,13 @@
 class User {
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
+
     public User(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
-    public static void main(String[] args) {
-
-        User[] user = new User[5];
-        user[0] = new User("Peter", 18);
-        user[1] = new User("John", 26);
-        user[2] = new User("Jenny", 22);
-        user[3] = new User("Alice", 32);
-        user[4] = new User("Damian", 42);
-
+    public static void printYoungUsers(User[] user) {
         int sum = 0;
 
         if (user.length > 0) {

@@ -3,6 +3,7 @@ import java.util.Random;
 public class RndMinMax {
     private int minNumber;
     private int maxNumber;
+    Random rnd = new Random();
 
     public int getMinNumber() {
         return minNumber;
@@ -14,17 +15,15 @@ public class RndMinMax {
 
     public void process() {
         int sumMax = 5000;
-        int sumDrNums = 0;
-        int tempDrawn = 0;
-
-        RndMinMax rndMinMax = new RndMinMax();
+        int sumOfDrawn = 0;
+        int tempDrawn;
 
         minNumber = 31;
         maxNumber = -1;
 
-        while (sumDrNums < sumMax) {
-            tempDrawn = draw();
-            sumDrNums += tempDrawn;
+        while (sumOfDrawn < sumMax) {
+            tempDrawn = rnd.nextInt(31);
+            sumOfDrawn += tempDrawn;
 
             if (tempDrawn < minNumber) {
                 minNumber = tempDrawn;
@@ -34,10 +33,5 @@ public class RndMinMax {
                 maxNumber = tempDrawn;
             }
         }
-    }
-    private static int draw() {
-        Random rnd = new Random();
-        int result;
-        return result = rnd.nextInt(31);
     }
 }
