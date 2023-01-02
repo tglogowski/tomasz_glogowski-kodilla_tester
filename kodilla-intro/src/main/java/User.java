@@ -7,20 +7,22 @@ class User {
         this.age = age;
     }
 
-    public static void printYoungUsers(User[] user) {
+    public static double printYoungUsers(User[] user) {
         int sum = 0;
 
         if (user.length > 0) {
             for (int i = 0; i < user.length; i++) {
                 sum += user[i].age;
             }
-            double aveAge = (double) sum / user.length;
+            return (double) sum / user.length;
+        }
+        return 0;
+    }
 
-            for (int j = 0; j < user.length; j++) {
-                if (user[j].age < aveAge) {
+    public static void printNames(User[] user, double ave){
+             for (int j = 0; j < user.length; j++)
+                if (user[j].age < ave) {
                     System.out.println(user[j].name);
                 }
-            }
-        }
     }
 }

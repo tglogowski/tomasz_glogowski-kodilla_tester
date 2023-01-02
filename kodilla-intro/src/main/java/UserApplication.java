@@ -10,6 +10,8 @@ public class UserApplication {
         user[3] = new User("Alice", 32);
         user[4] = new User("Damian", 42);
 
-        User.printYoungUsers(user);
+        double average = User.printYoungUsers(user);
+
+        User.printNames(user, average);
     }
 }
