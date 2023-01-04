@@ -1,9 +1,16 @@
 import java.util.Random;
 
 public class RndMinMax {
+
+    private static final Random RANDOM = new Random();
+    private static final int MAX_SUM = 5000;
+    private static final int MAX_RANDOM_NUMBER = 31;
+    private static final int MAX_INIT_VALUE = -1;
+    private static final int MIN_INIT_VALUE = 31;
+
     private int minNumber;
     private int maxNumber;
-    Random rnd = new Random();
+
 
     public int getMinNumber() {
         return minNumber;
@@ -14,23 +21,22 @@ public class RndMinMax {
     }
 
     public void process() {
-        int sumMax = 5000;
-        int sumOfDrawn = 0;
-        int tempDrawn;
+        int sum = 0;
+        int randomNumber;
 
-        minNumber = 31;
-        maxNumber = -1;
+        minNumber = MIN_INIT_VALUE;
+        maxNumber = MAX_INIT_VALUE;
 
-        while (sumOfDrawn < sumMax) {
-            tempDrawn = rnd.nextInt(31);
-            sumOfDrawn += tempDrawn;
+        while (sum < MAX_SUM) {
+            randomNumber = RANDOM.nextInt(MAX_RANDOM_NUMBER);
+            sum += randomNumber;
 
-            if (tempDrawn < minNumber) {
-                minNumber = tempDrawn;
+            if (randomNumber < minNumber) {
+                minNumber = randomNumber;
             }
 
-            if (tempDrawn > maxNumber) {
-                maxNumber = tempDrawn;
+            if (randomNumber > maxNumber) {
+                maxNumber = randomNumber;
             }
         }
     }
