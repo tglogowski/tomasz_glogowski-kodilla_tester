@@ -3,9 +3,23 @@ package com.kodilla.abstracts.homework2;
 public class Driver extends Job {
 
     private static final String JOB_NAME = "driver";
+    private int salary;
+    private String responsibilities;
 
     public Driver(int salary, String responsibilities) {
         super(salary, responsibilities);
+        this.salary = salary;
+        this.responsibilities = responsibilities;
+    }
+
+    @Override
+    public String getResponsibilities() {
+        return responsibilities;
+    }
+
+    @Override
+    public int getSalary() {
+        return salary;
     }
 
     @Override

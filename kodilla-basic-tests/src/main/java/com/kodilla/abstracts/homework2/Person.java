@@ -16,6 +16,6 @@ public class Person {
 
         System.out.println("Hello. My name is " + firstName + ".");
         System.out.println("I am " + age + " and I am a " + job.jobName() + ".");
-        System.out.println("I need to " + job.getResponsibilities() + " for " + job.getSalary() + " PLN per month.");
+        System.out.println("I need to " + job.getResponsibilities()+ " for " + job.getSalary() + " PLN per month.");
     }
 }
