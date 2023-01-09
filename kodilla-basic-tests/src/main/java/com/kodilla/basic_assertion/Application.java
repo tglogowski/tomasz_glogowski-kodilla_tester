@@ -23,9 +23,9 @@ public class Application {
 
         int squareNumberResult = calculator.squareNumber(a);
         if (ResultChecker.assertEquals(25, squareNumberResult)) {
-            System.out.println("Metoda sum działa poprawnie dla liczb " + a);
+            System.out.println("Metoda squareNumber działa poprawnie dla liczb " + a);
         } else {
-            System.out.println("Metoda sum nie działa poprawnie dla liczb " + a);
+            System.out.println("Metoda squareNumber nie działa poprawnie dla liczb " + a);
         }
     }
 }
