@@ -1,37 +1,28 @@
 package com.kodilla.collections.interfaces.homework;
 
 public class CarRace {
-    private static final int SPEED_DECREMENT_VALUE = 10;
-    public static void main(String[] args)
 
-        Car ford = new Ford(20, SPEED_DECREMENT_VALUE);
-        ford.increaseSpeed();
-        ford.increaseSpeed();
-        ford.increaseSpeed();
-        ford.decreaseSpeed();
-        ford.decreaseSpeed();
+    private static Car[] car = new Car[3];
+    private static final int SPEED_DECREMENT_VALUE = 20;
+    public static void main(String[] args) {
 
-        Car jaguar = new Jaguar(35, SPEED_DECREMENT_VALUE);
-        jaguar.increaseSpeed();
-        jaguar.increaseSpeed();
-        jaguar.increaseSpeed();
-        jaguar.decreaseSpeed();
-        jaguar.decreaseSpeed();
+        car[0] = new Ford(50, SPEED_DECREMENT_VALUE);
+        car[1] = new Jaguar(70, SPEED_DECREMENT_VALUE);
+        car[2] = new Renault(45, SPEED_DECREMENT_VALUE);
 
-        Car renault = new Renault(25, SPEED_DECREMENT_VALUE);
-        renault.increaseSpeed();
-        renault.increaseSpeed();
-        renault.increaseSpeed();
-        renault.decreaseSpeed();
-        renault.decreaseSpeed();
+        doRace(car);
 
-        doRace(ford);
-        doRace(jaguar);
-        doRace(renault);
     }
+        private static void doRace(Car[] car) {
 
-    private static void doRace(Car car) {
+            for (int j = 0; j < car.length; j++) {
+                for (int i = 0; i < 3; i++)
+                    car[j].increaseSpeed();
 
-        System.out.println("Actual " + car.getClass().getSimpleName() + " speed: " + car.getSpeed());
-    }
+                for (int i = 0; i < 2; i++)
+                    car[j].decreaseSpeed();
+
+                System.out.println("Actual " + car[j].getClass().getSimpleName() + " speed: " + car[j].getSpeed());
+            }
+        }
 }
