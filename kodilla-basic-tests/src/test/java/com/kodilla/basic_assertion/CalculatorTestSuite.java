@@ -16,7 +16,7 @@ public class CalculatorTestSuite {
     }
 
     @Test
-    public void testSubtrack() {
+    public void testSubtract() {
         Calculator calculator = new Calculator();
         int a = 21;
         int b = 7;
@@ -25,7 +25,7 @@ public class CalculatorTestSuite {
     }
 
     @Test
-    public void testSquareNumber() {
+    public void testPositiveNumber() {
         Calculator calculator = new Calculator();
         int a = 2;
         double squareNumberResult = calculator.squareNumber(a);
@@ -41,7 +41,7 @@ public class CalculatorTestSuite {
     }
 
     @Test
-    public void testSquareNegativeNumbers() {
+    public void testNegativeNumber() {
         Calculator calculator = new Calculator();
         int a = -3;
         double squareNumberResult = calculator.squareNumber(a);
