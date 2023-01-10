@@ -6,10 +6,17 @@ public class CashMachine {
     private int[] transactions;
     private int sum = 0;
 
+    public int getCountOfCashMachines() {
+        return countOfCashMachines;
+    }
+
+    private int countOfCashMachines = 0;
+
     public CashMachine() {
 
         this.size = 0;
         this.transactions = new int[this.size];
+        countOfCashMachines++;
     }
 
     public void addTransaction(int cash) {

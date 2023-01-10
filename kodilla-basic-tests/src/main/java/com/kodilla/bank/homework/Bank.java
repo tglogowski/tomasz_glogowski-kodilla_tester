@@ -1,7 +1,7 @@
 package com.kodilla.bank.homework;
 
 public class Bank {
-    private static final int NUMBER_OF_CASH_MACHINES =2;
+
     private final CashMachine[] cashMachines;
 
     public Bank(CashMachine[] cashMachines) {
@@ -11,7 +11,7 @@ public class Bank {
     public int getTotalBalance() {
 
         int sum =0;
-        for(int i = 0; i < NUMBER_OF_CASH_MACHINES ; i++) {
+        for(int i = 0; i < this.cashMachines.length ; i++) {
             sum += cashMachines[i].getActualBalance();
         }
         return sum;
@@ -22,7 +22,7 @@ public class Bank {
         int[] tempTab;
         int count = 0;
 
-        for(int i = 0; i < NUMBER_OF_CASH_MACHINES ; i++) {
+        for(int i = 0; i < this.cashMachines.length  ; i++) {
             tempTab = cashMachines[i].getTransactions();
             for (int j = 0; j < tempTab.length; j++) {
                 if (tempTab[j] < 0)
@@ -36,7 +36,7 @@ public class Bank {
         int[] tempTab;
         int count = 0;
 
-        for(int i = 0; i < NUMBER_OF_CASH_MACHINES ; i++) {
+        for(int i = 0; i < this.cashMachines.length  ; i++) {
             tempTab = cashMachines[i].getTransactions();
             for (int j = 0; j < tempTab.length; j++) {
                 if (tempTab[j] > 0)
@@ -51,7 +51,7 @@ public class Bank {
         int sum = 0;
         int count = 0;
 
-        for(int i = 0; i < NUMBER_OF_CASH_MACHINES ; i++) {
+        for(int i = 0; i < this.cashMachines.length  ; i++) {
             tempTab = cashMachines[i].getTransactions();
             for (int j = 0; j < tempTab.length; j++) {
                 if (tempTab[j] < 0) {
@@ -69,7 +69,7 @@ public class Bank {
         int sum = 0;
         int count = 0;
 
-        for(int i = 0; i < NUMBER_OF_CASH_MACHINES ; i++) {
+        for(int i = 0; i < this.cashMachines.length  ; i++) {
             tempTab = cashMachines[i].getTransactions();
             for (int j = 0; j < tempTab.length; j++) {
                 if (tempTab[j] > 0) {

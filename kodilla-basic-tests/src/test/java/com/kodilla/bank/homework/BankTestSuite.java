@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BankTestSuite {
 
     CashMachine[] cashMachines = new CashMachine[2];
-    Bank bank = new Bank(cashMachines);
 
     @Test
     public void checkTotalBalanceCorrect() {
@@ -21,7 +20,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-1000);
         cashMachines[1].addTransaction(2000);
 
-        int sum = bank.getTotalBalance();
+        int sum = new Bank(cashMachines).getTotalBalance();
 
         assertEquals(5900, sum);
     }
@@ -38,7 +37,8 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-1000);
         cashMachines[1].addTransaction(2000);
 
-        int sum = bank.numberOfPayouts();
+
+        int sum = new Bank(cashMachines).numberOfPayouts();
 
         assertEquals(2, sum);
 
@@ -58,7 +58,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-1000);
         cashMachines[1].addTransaction(2000);
 
-        int sum = bank.numberOfPayments();
+        int sum = new Bank(cashMachines).numberOfPayments();
 
         assertEquals(6, sum);
 
@@ -72,7 +72,7 @@ public class BankTestSuite {
         cashMachines[1] = new CashMachine();
         cashMachines[1].addTransaction(0);
 
-        double sum = bank.paymentsAverage();
+        double sum = new Bank(cashMachines).paymentsAverage();
 
         assertEquals(0, sum);
     }
@@ -86,7 +86,7 @@ public class BankTestSuite {
         cashMachines[1] = new CashMachine();
         cashMachines[1].addTransaction(0);
 
-        double sum = bank.payoutsAverage();
+        double sum = new Bank(cashMachines).payoutsAverage();
 
         assertEquals(0, sum);
     }
@@ -106,13 +106,13 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-200);
         cashMachines[1].addTransaction(2000);
 
-        double sum = bank.paymentsAverage();
+        double sum = new Bank(cashMachines).paymentsAverage();
 
         assertEquals(1000, sum);
     }
 
     @Test
-    public void checkpayoutsAverage() {
+    public void checkPayoutsAverage() {
         cashMachines[0] = new CashMachine();
         cashMachines[0].addTransaction(200);
         cashMachines[0].addTransaction(-100);
@@ -125,7 +125,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-200);
         cashMachines[1].addTransaction(2000);
 
-        double sum = bank.payoutsAverage();
+        double sum = new Bank(cashMachines).payoutsAverage();
 
         assertEquals(-900, sum);
     }
