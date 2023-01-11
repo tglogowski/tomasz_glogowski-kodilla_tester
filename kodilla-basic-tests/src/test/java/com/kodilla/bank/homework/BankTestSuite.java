@@ -20,7 +20,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-1000);
         cashMachines[1].addTransaction(2000);
 
-        int sum = new Bank(cashMachines).getTotalBalance();
+        int sum = new Bank(cashMachines).getBalance();
 
         assertEquals(5900, sum);
     }
@@ -38,7 +38,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(2000);
 
 
-        int sum = new Bank(cashMachines).numberOfPayouts();
+        int sum = new Bank(cashMachines).getPayouts();
 
         assertEquals(2, sum);
 
@@ -58,7 +58,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-1000);
         cashMachines[1].addTransaction(2000);
 
-        int sum = new Bank(cashMachines).numberOfPayments();
+        int sum = new Bank(cashMachines).getPayments();
 
         assertEquals(6, sum);
 
@@ -72,7 +72,7 @@ public class BankTestSuite {
         cashMachines[1] = new CashMachine();
         cashMachines[1].addTransaction(0);
 
-        double sum = new Bank(cashMachines).paymentsAverage();
+        double sum = new Bank(cashMachines).getPaymentsAverage();
 
         assertEquals(0, sum);
     }
@@ -86,7 +86,7 @@ public class BankTestSuite {
         cashMachines[1] = new CashMachine();
         cashMachines[1].addTransaction(0);
 
-        double sum = new Bank(cashMachines).payoutsAverage();
+        double sum = new Bank(cashMachines).getPayoutsAverage();
 
         assertEquals(0, sum);
     }
@@ -103,10 +103,10 @@ public class BankTestSuite {
         cashMachines[1] = new CashMachine();
         cashMachines[1].addTransaction(3000);
         cashMachines[1].addTransaction(-3000);
-        cashMachines[1].addTransaction(-200);
+        cashMachines[1].addTransaction(-2000);
         cashMachines[1].addTransaction(2000);
 
-        double sum = new Bank(cashMachines).paymentsAverage();
+        double sum = new Bank(cashMachines).getPaymentsAverage();
 
         assertEquals(1000, sum);
     }
@@ -125,7 +125,7 @@ public class BankTestSuite {
         cashMachines[1].addTransaction(-200);
         cashMachines[1].addTransaction(2000);
 
-        double sum = new Bank(cashMachines).payoutsAverage();
+        double sum = new Bank(cashMachines).getPayoutsAverage();
 
         assertEquals(-900, sum);
     }

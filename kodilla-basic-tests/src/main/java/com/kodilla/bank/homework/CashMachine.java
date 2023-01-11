@@ -6,25 +6,18 @@ public class CashMachine {
     private int[] transactions;
     private int sum = 0;
 
-    public int getCountOfCashMachines() {
-        return countOfCashMachines;
-    }
-
-    private int countOfCashMachines = 0;
-
     public CashMachine() {
 
         this.size = 0;
         this.transactions = new int[this.size];
-        countOfCashMachines++;
     }
 
-    public void addTransaction(int cash) {
+    public void addTransaction(int transaction) {
 
         size++;
-        int[] tempTab  = new int[size];
-        System.arraycopy(transactions,0, tempTab,0, transactions.length);
-        tempTab[size -1] = cash;
+        int[] tempTab = new int[size];
+        System.arraycopy(transactions, 0, tempTab, 0, transactions.length);
+        tempTab[size - 1] = transaction;
         transactions = tempTab;
     }
 
@@ -34,7 +27,7 @@ public class CashMachine {
 
     public int getActualBalance() {
 
-        for (int i =0; i < transactions.length; i++) {
+        for (int i = 0; i < transactions.length; i++) {
             sum += transactions[i];
         }
         return sum;
@@ -42,5 +35,49 @@ public class CashMachine {
 
     public int getHowManyTransactions() {
         return transactions.length;
+    }
+
+    public int getTotalPayouts() {
+
+        int count = 0;
+
+        for (int i = 0; i < this.transactions.length; i++) {
+            if (transactions[i] < 0)
+                count++;
+        }
+        return count;
+    }
+
+    public int getTotalPayments() {
+
+        int count = 0;
+
+        for (int i = 0; i < this.transactions.length; i++) {
+            if (transactions[i] > 0)
+                count++;
+        }
+        return count;
+    }
+
+    public double getSumOfPayments() {
+
+        double sum = 0;
+
+        for (int i = 0; i < this.transactions.length; i++) {
+            if (transactions[i] > 0)
+                sum += transactions[i];
+        }
+        return sum;
+    }
+
+    public double getSumOfPayouts() {
+
+        double sum = 0;
+
+        for (int i = 0; i < this.transactions.length; i++) {
+            if (transactions[i] < 0)
+                sum += transactions[i];
+        }
+        return sum;
     }
 }
