@@ -12,7 +12,12 @@ public class CarListApplication {
         List<Ford> cars = new ArrayList<>();
 
         addCars(cars);
-        removeCars(cars);
+        increaseSpeed(cars);
+        describeCars(cars);
+
+        cars.remove(2);
+        Ford ford = new Ford(26,6);
+        cars.remove(ford);
 
         describeCars(cars);
     }
@@ -26,16 +31,13 @@ public class CarListApplication {
 
     private static void describeCars(List<Ford> cars) {
 
-        for (Ford ford: cars) {
-            ford.increaseSpeed();
+        for (Ford ford: cars)
             CarUtils.describeCar(ford);
-        }
     }
 
-    private static void removeCars(List<Ford> cars) {
+    private static void increaseSpeed(List<Ford> cars) {
 
-        cars.remove(2);
-        Ford ford = new Ford(26,6);
-        cars.remove(ford);
+        for (Ford ford : cars)
+            ford.increaseSpeed();
     }
 }
