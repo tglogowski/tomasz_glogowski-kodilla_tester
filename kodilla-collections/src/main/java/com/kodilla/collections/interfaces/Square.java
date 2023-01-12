@@ -16,4 +16,11 @@ public class Square implements Shape {
     public double getPerimeter() {
         return 4 * width;
     }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "width=" + width +
+                '}';
+    }
 }
