@@ -36,5 +36,18 @@ public class Ford implements Car {
     public int getSpeed() {
         return actualSpeed;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ford ford = (Ford) o;
+        return speedIncrementValue == ford.speedIncrementValue && speedDecrementValue == ford.speedDecrementValue;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(speedIncrementValue, speedDecrementValue);
+    }
 }
 

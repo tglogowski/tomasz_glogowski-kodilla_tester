@@ -1,7 +1,6 @@
 package com.kodilla.collections.lists.homework;
 
 import com.kodilla.collections.arrays.homework.CarUtils;
-import com.kodilla.collections.interfaces.homework.Car;
 import com.kodilla.collections.interfaces.homework.Ford;
 
 import java.util.ArrayList;
