@@ -1,6 +1,8 @@
 package com.kodilla.collections.interfaces.homework;
 
-public class Ford implements Car{
+import java.util.Objects;
+
+public class Ford implements Car {
 
     private int actualSpeed = 0;
     private int speedIncrementValue;
@@ -30,7 +32,9 @@ public class Ford implements Car{
     }
 
     @Override
+
     public int getSpeed() {
         return actualSpeed;
     }
 }
+
