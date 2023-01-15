@@ -48,6 +48,3 @@ public class CalculatorTestSuite {
         assertEquals(9, squareNumberResult, 0.1);
     }
 }
-=======
-}
->>>>>>> 3af8995 (TA-3.6 Podstawy JUnit)
