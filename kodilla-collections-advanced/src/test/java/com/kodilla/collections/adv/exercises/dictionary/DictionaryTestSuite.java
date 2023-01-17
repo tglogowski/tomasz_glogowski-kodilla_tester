@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DictionaryTestSuite {
     @Test
-    public void testAdword() {
+    public void testAddWord() {
         //given
         Dictionary dictionary = new Dictionary();
         String polishWord = "stos";
