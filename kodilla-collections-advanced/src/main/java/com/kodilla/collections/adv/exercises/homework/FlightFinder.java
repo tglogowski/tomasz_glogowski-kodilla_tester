@@ -4,24 +4,16 @@ import java.util.*;
 
 public class FlightFinder {
 
-    private Set<Flight> flights = new LinkedHashSet<>();
-    private List<Flight> result = new LinkedList<>();
+    private static final int FROM = 0;
+    private static final int TO = 1;
 
     public List<Flight> findFlightsFrom(String departure) {
 
-        flights = FlightRepository.getFlightsTable();
-        for (Flight flightTo : flights) {
-            if (flightTo.getDeparture().equals(departure)) result.add(flightTo);
-        }
-        return result;
+        return FlightRepository.getFlightsTable(departure, FROM);
     }
 
     public List<Flight> findFlightsTo(String arrival) {
 
-        flights = FlightRepository.getFlightsTable();
-        for (Flight flightFrom : flights) {
-            if (flightFrom.getArrival().equals(arrival)) result.add(flightFrom);
-        }
-        return result;
+        return FlightRepository.getFlightsTable(arrival, TO);
     }
 }

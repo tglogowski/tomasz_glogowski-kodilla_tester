@@ -3,8 +3,8 @@ package com.kodilla.collections.adv.exercises.homework;
 import java.util.Objects;
 
 public class Flight {
-    String departure;
-    String arrival;
+    private final String departure;
+    private final String arrival;
 
     public Flight(String departure, String arrival) {
         this.departure = departure;
@@ -34,7 +34,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return  "departure='" + departure + '\'' +
+        return "departure='" + departure + '\'' +
                 ", arrival='" + arrival + '\'' +
                 '}' + "\n";
     }
