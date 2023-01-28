@@ -9,7 +9,7 @@ public class UsersManager {
         System.out.println(chemistGroupUserNames);
     }
 
-    private static List<String> filterChemistsGroupUsernames() {
+    public static List<String> filterChemistsGroupUsernames() {
         List<String> usernames = UsersRepository.getUsersList()
                 .stream()
                 .filter(user -> user.getGroup().equals("Chemists"))
@@ -21,5 +21,24 @@ public class UsersManager {
 
     public static String getUserName(User user) {
         return user.getUsername();
+    }
+
+    public static List<User> filterAgeUsers(int age) {
+        List<User> users = UsersRepository.getUsersList()
+                .stream()
+                .filter(user -> user.getAge() > age)
+                .collect(Collectors.toList());
+        return users;
+    }
+
+    public static List<String> filterActivity(int numberOfPosts) {
+
+        List<String> userGroups = UsersRepository.getUsersList()
+                .stream()
+
+                .filter(user -> user.getNumberOfPost() > numberOfPosts)
+                .map(User::getGroup)
+                .collect(Collectors.toList());
+        return userGroups;
     }
 }
