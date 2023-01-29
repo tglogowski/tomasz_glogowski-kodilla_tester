@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class Application {
-    static Teacher teacher1;
-    static Teacher teacher2;
+
     static List<Student> students = new ArrayList<>();
+    static List<Teacher> teachers = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -20,23 +20,18 @@ public class Application {
 
     public static void initStudents() {
 
-        students.add(new Student("Judy",teacher1));
+        students.add(new Student("Judy",teachers.get(0)));
         students.add(new Student("Andy",null));
-        students.add(new Student("Peter",teacher2));
-        students.add(new Student("Johny",teacher2));
+        students.add(new Student("Peter",teachers.get(1)));
+        students.add(new Student("Johny",teachers.get(1)));
         students.add(new Student("Ann",null));
     }
-
     public static void initTeachers() {
-
-        teacher1 = new Teacher("Jerry Brown");
-        teacher2 = new Teacher("Steven Keaton");
+        teachers.add(new Teacher("Jerry Brown"));
+        teachers.add(new Teacher("Steven Keaton"));
     }
 
     public static String printStudentsList(Student student) {
-
-            Optional<Teacher> teacherOptional = Optional.ofNullable(student.getTeacher());
-            Teacher teacher = teacherOptional.orElse(new Teacher("<undefined>"));
-            return "Student: " + student.getName() + ", teacher: " + teacher.getName();
+         return "Student: " + student.getName() + ", teacher: " + student.getTeacher().getName();
     }
 }
