@@ -12,11 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ForumStatsTest {
 
-    public List<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
-    @BeforeEach
-    public void setup() {
-
+    private void initUsers(){
         users.add(new User("Walter White", 50, 500, "Chemists"));
         users.add(new User("Jessie Pinkman", 25, 100, "Sales"));
         users.add(new User("Tuco Salamanca", 34, 900, "Manager"));
@@ -25,13 +23,19 @@ public class ForumStatsTest {
         users.add(new User("Mike Ehrmantraut", 57, 2000, "Security"));
     }
 
+    @BeforeEach
+    public void setup() {
+        initUsers();
+    }
+
     @Test
-    public void testGetAvgNumbsOfPostsFromYoung() {
+    public void testIfUsersListIsEmpty() {
         //given
         //when
-        double result = ForumStats.getAvgNumbsOfPostsFromYoung(users);
+        int result = users.size();
         //then
-        assertEquals(500, result);
+
+        assertEquals(6, result);
     }
 
     @Test
@@ -46,8 +50,9 @@ public class ForumStatsTest {
     @Test
     public void testGetAvgNumbsOfPostsFromYoung_IfArgIsNull() {
         //given
+        users = null;
         //when
-        double result = ForumStats.getAvgNumbsOfPostsFromYoung(null);
+        double result = ForumStats.getAvgNumbsOfPostsFromYoung(users);
         //then
         assertEquals(0, result);
     }
@@ -55,8 +60,9 @@ public class ForumStatsTest {
     @Test
     public void testGetAvgNumbsOfPostsFromOlder_IfArgIsNull() {
         //given
+        users = null;
         //when
-        double result = ForumStats.getAvgNumbsOfPostsFromOlder(null);
+        double result = ForumStats.getAvgNumbsOfPostsFromOlder(users);
         //then
         assertEquals(0, result);
     }
