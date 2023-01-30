@@ -16,27 +16,27 @@ public class ForumStats {
         List<User> users;
         users = UsersRepository.getUsersList();
 
-        System.out.println(getAvgNumbsOfPostsFromYoung(users,40));
-        System.out.println(getAvgNumbsOfPostsFromOlder(users,40));
+        System.out.println(getAvgNumbsOfPostsFromYoung(users));
+        System.out.println(getAvgNumbsOfPostsFromOlder(users));
     }
 
-    public static double getAvgNumbsOfPostsFromYoung(List<User> users,int age) {
+    public static double getAvgNumbsOfPostsFromYoung(List<User> users) {
         if (users == null)
             return 0;
         return users
                 .stream()
-                .filter(a -> a.getAge() < age)
+                .filter(age -> age.getAge() < AGE_BORDER)
                 .mapToInt(User::getNumberOfPost)
                 .average()
                 .orElse(0);
     }
 
-    public static double getAvgNumbsOfPostsFromOlder(List<User> users, int age) {
+    public static double getAvgNumbsOfPostsFromOlder(List<User> users) {
         if (users == null)
             return 0;
         return users
                 .stream()
-                .filter(a -> a.getAge() >= age)
+                .filter(age -> age.getAge() >= AGE_BORDER)
                 .mapToInt(User::getNumberOfPost)
                 .average()
                 .orElse(0);

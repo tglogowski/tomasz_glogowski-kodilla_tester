@@ -42,7 +42,7 @@ public class ForumStatsTest {
     public void testGetAvgNumbsOfPostsFromOlder() {
         //given
         //when
-        double result = ForumStats.getAvgNumbsOfPostsFromOlder(users,40);
+        double result = ForumStats.getAvgNumbsOfPostsFromOlder(users);
         //then
         assertEquals(1250, result);
     }
@@ -52,7 +52,7 @@ public class ForumStatsTest {
         //given
         users = null;
         //when
-        double result = ForumStats.getAvgNumbsOfPostsFromYoung(users,40);
+        double result = ForumStats.getAvgNumbsOfPostsFromYoung(users);
         //then
         assertEquals(0, result);
     }
@@ -62,7 +62,7 @@ public class ForumStatsTest {
         //given
         users = null;
         //when
-        double result = ForumStats.getAvgNumbsOfPostsFromOlder(users,40);
+        double result = ForumStats.getAvgNumbsOfPostsFromOlder(users);
         //then
         assertEquals(0, result);
     }
