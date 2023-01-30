@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public class ForumStats {
 
+
     public static void main(String[] args) {
 
         List<User> users;
@@ -19,6 +20,7 @@ public class ForumStats {
     }
 
     public static double getAvgNumbsOfPostsFromYoung(List<User> users, int age) {
+
         if (users == null)
             return 0;
         return users
@@ -30,6 +32,7 @@ public class ForumStats {
     }
 
     public static double getAvgNumbsOfPostsFromOlder(List<User> users, int age) {
+
         if (users == null)
             return 0;
         return users

@@ -34,7 +34,6 @@ public class ForumStatsTest {
         //when
         int result = users.size();
         //then
-
         assertEquals(6, result);
     }
 
