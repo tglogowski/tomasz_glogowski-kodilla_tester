@@ -33,7 +33,7 @@ public class ApplicationTestSuite {
         //given
         Student student = new Student("Somebody", new Teacher("The best teacher"));
         //when
-        String result = student.getTeacher().orElse(new Teacher("<undefined>")).getName();
+        String result = student.getTeacher().map(teacher -> teacher.getName()).orElse("<undefined>");
         //then
         String expected = "The best teacher";
         assertEquals(expected, result);
@@ -43,7 +43,7 @@ public class ApplicationTestSuite {
     public void testWhenTeacherIsNull() {
         //given
         Student student = new Student("Somebody", null);
-        String result = student.getTeacher().orElse(new Teacher("<undefined>")).getName();
+        String result = student.getTeacher().map(teacher ->teacher.getName()).orElse("<undefined>");
         //when
         String expected = "<undefined>";
         assertEquals(expected, result);

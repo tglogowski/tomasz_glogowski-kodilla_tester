@@ -11,7 +11,7 @@ public class Application {
         List<Student> students = initStudents(teachers);
         for (Student student : students) {
             System.out.println("Student: " + student.getName() + ", teacher: "
-                    + student.getTeacher().orElse(new Teacher("<undefined>")).getName());
+                    + student.getTeacher().map(teacher -> teacher.getName()).orElse("<undefined>"));
         }
     }
 
