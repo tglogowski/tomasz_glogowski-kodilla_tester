@@ -2,36 +2,34 @@ package com.kodilla.optional.homework;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Application {
 
-    static List<Student> students = new ArrayList<>();
-    static List<Teacher> teachers = new ArrayList<>();
-
     public static void main(String[] args) {
 
-        initTeachers();
-        initStudents();
+        List<Teacher> teachers = initTeachers();
+        List<Student> students = initStudents(teachers);
         for (Student student : students) {
-            System.out.println(printStudentsList(student));
+            System.out.println("Student: " + student.getName() + ", teacher: "
+                    + student.getTeacher().orElse(new Teacher("<undefined>")).getName());
         }
     }
 
-    public static void initStudents() {
+    public static List<Student> initStudents(List<Teacher> teacher) {
 
-        students.add(new Student("Judy",teachers.get(0)));
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Judy",teacher.get(0)));
         students.add(new Student("Andy",null));
-        students.add(new Student("Peter",teachers.get(1)));
-        students.add(new Student("Johny",teachers.get(1)));
+        students.add(new Student("Peter",teacher.get(1)));
+        students.add(new Student("Johny",teacher.get(1)));
         students.add(new Student("Ann",null));
+        return students;
     }
-    public static void initTeachers() {
+    public static List<Teacher> initTeachers() {
+
+        List<Teacher> teachers = new ArrayList<>();
         teachers.add(new Teacher("Jerry Brown"));
         teachers.add(new Teacher("Steven Keaton"));
-    }
-
-    public static String printStudentsList(Student student) {
-         return "Student: " + student.getName() + ", teacher: " + student.getTeacher().getName();
+        return teachers;
     }
 }

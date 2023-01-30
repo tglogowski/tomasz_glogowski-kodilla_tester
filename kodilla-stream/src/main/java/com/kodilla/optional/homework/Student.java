@@ -15,8 +15,7 @@ public class Student {
         return name;
     }
 
-    public Teacher getTeacher() {
-        Optional<Teacher> teacherOptional = Optional.ofNullable(teacher);
-        return teacherOptional.orElse(new Teacher("<undefined>"));
+    public Optional<Teacher> getTeacher() {
+        return Optional.ofNullable(teacher);
     }
 }

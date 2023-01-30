@@ -1,21 +1,20 @@
 package com.kodilla.optional.homework;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ApplicationTestSuite {
 
+    List<Teacher> teachers = Application.initTeachers();
+    List<Student> students = Application.initStudents(teachers);
 
     @Test
     public void testIfStudentsListNotEmpty() {
         //given
         //when
-        Application.initTeachers();
-        Application.initStudents();
-        int result = Application.students.size();
+        int result = students.size();
         //then
         assertEquals(5, result);
     }
@@ -24,7 +23,7 @@ public class ApplicationTestSuite {
     public void testIfTeachersListNotEmpty() {
         //given
         //when
-        int result = Application.teachers.size();
+        int result = teachers.size();
         //then
         assertEquals(2, result);
     }
@@ -34,9 +33,9 @@ public class ApplicationTestSuite {
         //given
         Student student = new Student("Somebody", new Teacher("The best teacher"));
         //when
-        String result = Application.printStudentsList(student);
+        String result = student.getTeacher().orElse(new Teacher("<undefined>")).getName();
         //then
-        String expected = "Student: Somebody, teacher: The best teacher";
+        String expected = "The best teacher";
         assertEquals(expected, result);
     }
 
@@ -44,10 +43,9 @@ public class ApplicationTestSuite {
     public void testWhenTeacherIsNull() {
         //given
         Student student = new Student("Somebody", null);
+        String result = student.getTeacher().orElse(new Teacher("<undefined>")).getName();
         //when
-        String result = Application.printStudentsList(student);
-        //then
-        String expected = "Student: Somebody, teacher: <undefined>";
+        String expected = "<undefined>";
         assertEquals(expected, result);
     }
 }
