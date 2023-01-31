@@ -5,6 +5,10 @@ plugins {
 group 'com.kodilla'
 version '1.0-SNAPSHOT'
 
+test {
+    useJUnitPlatform()
+}
+
 repositories {
     mavenCentral()
 }
@@ -14,6 +18,3 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-test {
-    useJUnitPlatform()
-}
