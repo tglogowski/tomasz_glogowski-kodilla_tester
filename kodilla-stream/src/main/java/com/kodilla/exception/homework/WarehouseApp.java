@@ -13,7 +13,7 @@ public class WarehouseApp {
         try {
             System.out.println(warehouse.getOrder(inputOrderNumber()));
         } catch (OrderDoesntExistException e) {
-            System.out.println("This order don't exists in Warehouse.");
+            e.printStackTrace();
         }
     }
 
