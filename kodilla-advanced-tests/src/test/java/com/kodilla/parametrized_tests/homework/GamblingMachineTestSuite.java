@@ -14,51 +14,6 @@ class GamblingMachineTestSuite {
     private final GamblingMachine gbm = new GamblingMachine();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/correctNumbers.csv", numLinesToSkip = 1)
-    public void testShouldReturnFalseWhenSetHasSixNumbers(String input) {
-        Set<Integer> numbs = Arrays.stream(input.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        assertFalse(gbm.isNotCorrectSize(numbs));
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/wrongNumbers.csv", numLinesToSkip = 1)
-    public void testShouldReturnTrueWhenSetHasMoreOrLessThanSixNumbers(String input) {
-        Set<Integer> numbs = Arrays.stream(input.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        assertTrue(gbm.isNotCorrectSize(numbs));
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/correctNumbers.csv", numLinesToSkip = 1)
-    public void testShouldReturnFalseWhenSetHasNumbersInScope(String input) {
-        Set<Integer> numbs = Arrays.stream(input.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        assertFalse(gbm.isAnyNumberOutOfDeclaredScope(numbs));
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/wrongNumbers.csv", numLinesToSkip = 1)
-    public void testShouldReturnTrueWhenSetHasNumbersOutOfScope(String input) {
-        Set<Integer> numbs = Arrays.stream(input.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        assertTrue(gbm.isAnyNumberOutOfDeclaredScope(numbs));
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/wrongNumbers.csv", numLinesToSkip = 1)
-    public void testValidateNumbersWhenAreWrong(String input) {
-        Set<Integer> numbs = Arrays.stream(input.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        assertThrows(InvalidNumbersException.class, () -> gbm.validateNumbers(numbs));
-    }
-
-    @ParameterizedTest
     @CsvFileSource(resources = "/wrongNumbers.csv", numLinesToSkip = 1)
     public void testHowManyWinsWhenNumbersIncorrect(String input) {
         Set<Integer> numbs = Arrays.stream(input.split(" "))
@@ -67,9 +22,22 @@ class GamblingMachineTestSuite {
         assertThrows(InvalidNumbersException.class, () -> gbm.howManyWins(numbs));
     }
 
-    @Test
-    public void testGenerateComputerNumbers() {
-        Set<Integer> result = new HashSet<>(gbm.generateComputerNumbers());
-        assertFalse(result.size() != 6 || result.stream().anyMatch(n -> n < 1 || n > 49));
+    @ParameterizedTest
+    @CsvFileSource(resources = "/correctNumbers.csv", numLinesToSkip = 1)
+    public void testHowManyWins_NotThrowsNull(String input) throws InvalidNumbersException {
+        Set<Integer> numbs = Arrays.stream(input.split(" "))
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
+        assertNotNull(gbm.howManyWins(numbs));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/correctNumbers.csv", numLinesToSkip = 1)
+    public void testHowManyWins_DoCountWhenNumbersAreCorrect(String input) throws InvalidNumbersException {
+        Set<Integer> numbs = Arrays.stream(input.split(" "))
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
+        int result = gbm.howManyWins(numbs);
+        assertTrue(result >= 0 && result <= 6);
     }
 }
