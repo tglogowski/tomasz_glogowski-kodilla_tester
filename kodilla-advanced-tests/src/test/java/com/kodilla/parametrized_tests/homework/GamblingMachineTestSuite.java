@@ -1,6 +1,5 @@
 package com.kodilla.parametrized_tests.homework;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -20,15 +19,6 @@ class GamblingMachineTestSuite {
                 .map(Integer::parseInt)
                 .collect(Collectors.toSet());
         assertThrows(InvalidNumbersException.class, () -> gbm.howManyWins(numbs));
-    }
-
-    @ParameterizedTest
-    @CsvFileSource(resources = "/correctNumbers.csv", numLinesToSkip = 1)
-    public void testHowManyWins_NotThrowsNull(String input) throws InvalidNumbersException {
-        Set<Integer> numbs = Arrays.stream(input.split(" "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        assertNotNull(gbm.howManyWins(numbs));
     }
 
     @ParameterizedTest
