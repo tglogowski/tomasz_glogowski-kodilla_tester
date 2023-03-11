@@ -11,26 +11,30 @@ public class Calculator {
         this.display = display;
     }
 
-    public void add(double a, double b) {
+    public double add(double a, double b) {
         double result = a + b;
         display.display(result);
+        return result;
     }
 
-    public void subtract(double a, double b) {
+    public double subtract(double a, double b) {
         double result = a - b;
         display.display(result);
+        return result;
     }
 
-    public void multiply(double a, double b) {
+    public double multiply(double a, double b) {
         double result = a * b;
         display.display(result);
+        return result;
     }
 
-    public void divide(double a, double b) {
+    public double divide(double a, double b) {
         if (b == 0) {
-            throw new IllegalArgumentException("Cannot divide by 0!");
+            throw new IllegalArgumentException("Cannot divide by zero");
         }
         double result = a / b;
         display.display(result);
+        return result;
     }
 }
