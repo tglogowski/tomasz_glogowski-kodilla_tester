@@ -13,10 +13,12 @@ public class Clock {
     private LocalTime time;
 
     public Clock() {
-
         this.time = LocalTime.now();
+        getTime();
+    }
+
+    public String getTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String formattedTime = time.format(formatter);
-        System.out.println("Time --> " + formattedTime);
+        return time.format(formatter);
     }
 }

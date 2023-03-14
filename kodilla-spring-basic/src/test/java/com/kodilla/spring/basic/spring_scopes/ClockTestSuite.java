@@ -11,6 +11,7 @@ class ClockTestSuite {
     @Test
     public void shouldCreateDifferentTasks() throws InterruptedException {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+
         Clock time_1 = context.getBean(Clock.class);
         Thread.sleep(2000);
         Clock time_2 = context.getBean(Clock.class);
