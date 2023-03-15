@@ -14,7 +14,6 @@ public class Clock {
 
     public Clock() {
         this.time = LocalTime.now();
-        getTime();
     }
 
     public String getTime() {

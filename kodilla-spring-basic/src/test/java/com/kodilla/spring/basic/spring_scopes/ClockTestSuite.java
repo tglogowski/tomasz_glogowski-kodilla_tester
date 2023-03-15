@@ -9,17 +9,35 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 class ClockTestSuite {
 
     @Test
-    public void shouldCreateDifferentTasks() throws InterruptedException {
+    public void shouldCreateDifferentTimeBeans() throws InterruptedException {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
 
-        Clock time_1 = context.getBean(Clock.class);
+        Clock time1 = context.getBean(Clock.class);
         Thread.sleep(2000);
-        Clock time_2 = context.getBean(Clock.class);
+        Clock time2 = context.getBean(Clock.class);
         Thread.sleep(1000);
-        Clock time_3 = context.getBean(Clock.class);
+        Clock time3 = context.getBean(Clock.class);
 
-        Assertions.assertNotEquals(time_1,time_2);
-        Assertions.assertNotEquals(time_2,time_3);
-        Assertions.assertNotEquals(time_3,time_1);
+        Assertions.assertNotEquals(time1,time2);
+        Assertions.assertNotEquals(time2,time3);
+        Assertions.assertNotEquals(time3,time1);
+    }
+
+    @Test
+    public void shouldGetDifferentClockIndication() throws InterruptedException {
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+
+        Clock time1 = context.getBean(Clock.class);
+        String timeRec1 = time1.getTime();
+        Thread.sleep(2000);
+        Clock time2 = context.getBean(Clock.class);
+        String timeRec2 = time2.getTime();
+        Thread.sleep(1000);
+        Clock time3 = context.getBean(Clock.class);
+        String timeRec3 = time3.getTime();
+
+        Assertions.assertNotEquals(timeRec1,timeRec2);
+        Assertions.assertNotEquals(timeRec2,timeRec3);
+        Assertions.assertNotEquals(timeRec3,timeRec1);
     }
 }
