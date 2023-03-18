@@ -16,8 +16,7 @@ public class Clock {
         this.time = LocalTime.now();
     }
 
-    public String getTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        return time.format(formatter);
+    public LocalTime getTime() {
+        return time;
     }
 }
