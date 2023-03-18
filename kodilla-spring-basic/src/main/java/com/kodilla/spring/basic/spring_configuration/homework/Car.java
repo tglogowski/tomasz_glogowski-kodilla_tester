@@ -4,4 +4,5 @@ public interface Car {
 
     boolean hasHeadlightsTurnedOn();
     String getCarType();
+    void setHeadlightsTurnedOn(boolean lightsOn);
 }

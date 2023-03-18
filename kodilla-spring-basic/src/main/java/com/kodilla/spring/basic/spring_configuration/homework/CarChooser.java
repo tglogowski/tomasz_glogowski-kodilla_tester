@@ -3,28 +3,26 @@ package com.kodilla.spring.basic.spring_configuration.homework;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDateTime;
-
 @Configuration
 public class CarChooser {
 
     @Bean
-    public Car chooseCar(LocalDateTime dateTime) {
+    public Car chooseCar(Clock date) {
 
-        int month = dateTime.getMonthValue();
-        int hour = dateTime.getHour();
-
-        boolean lightsOnOrOff = false;
-
-        if (hour >= 20 || hour < 6)
-            lightsOnOrOff = true;
+        int month = date.getMonth();
 
         if (month == 12 || month == 1 || month == 2) {
-            return new SUV(lightsOnOrOff);
+            return new SUV();
         } else if (month == 6 || month == 7 || month == 8) {
-            return new Cabrio(lightsOnOrOff);
+            return new Cabrio();
         } else {
-            return new Sedan(lightsOnOrOff);
+            return new Sedan();
         }
+    }
+
+     public void setLights(Car car, Clock time) {
+        int hour = time.getHour();
+        boolean lightsOn = hour >= 20 || hour < 6;
+        car.setHeadlightsTurnedOn(lightsOn);
     }
 }

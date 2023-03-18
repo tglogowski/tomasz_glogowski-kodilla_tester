@@ -4,10 +4,6 @@ public class Sedan implements Car {
 
     private boolean headlightsTurnedOn;
 
-    public Sedan(boolean headlightsTurnedOn) {
-        this.headlightsTurnedOn = headlightsTurnedOn;
-    }
-
     @Override
     public boolean hasHeadlightsTurnedOn() {
         return headlightsTurnedOn;
@@ -16,5 +12,10 @@ public class Sedan implements Car {
     @Override
     public String getCarType() {
         return "Sedan";
+    }
+
+    @Override
+    public void setHeadlightsTurnedOn(boolean headlightsTurnedOn) {
+        this.headlightsTurnedOn = headlightsTurnedOn;
     }
 }
