@@ -29,14 +29,14 @@ class ClockTestSuite {
     public void shouldGetDifferentClockIndication() throws InterruptedException {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
 
-        Clock time1 = context.getBean(Clock.class);
-        LocalTime timeRec1 = time1.getTime();
+        Clock clock1 = context.getBean(Clock.class);
+        LocalTime timeRec1 = clock1.getTime();
         Thread.sleep(2000);
-        Clock time2 = context.getBean(Clock.class);
-        LocalTime timeRec2 = time2.getTime();
+        Clock clock2 = context.getBean(Clock.class);
+        LocalTime timeRec2 = clock2.getTime();
         Thread.sleep(1000);
-        Clock time3 = context.getBean(Clock.class);
-        LocalTime timeRec3 = time3.getTime();
+        Clock clock3 = context.getBean(Clock.class);
+        LocalTime timeRec3 = clock3.getTime();
 
         Assertions.assertNotEquals(timeRec1,timeRec2);
         Assertions.assertNotEquals(timeRec2,timeRec3);
