@@ -1,5 +1,6 @@
 package com.kodilla.rest.controller;
 
+import com.google.gson.Gson;
 import com.kodilla.rest.domain.BookDto;
 import com.kodilla.rest.service.BookService;
 import org.hamcrest.Matchers;
@@ -15,18 +16,20 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
-@WebMvcTest(BookController.class)                   // [1]
+@WebMvcTest(BookController.class)
 public class BookControllerMvcTest {
 
     @Autowired
-    private MockMvc mockMvc;                         // [2]
+    private MockMvc mockMvc;
 
     @MockBean
-    private BookService bookService;                 // [3]
+    private BookService bookService;
 
     @Test
     void shouldFetchBooks() throws Exception {
@@ -37,9 +40,31 @@ public class BookControllerMvcTest {
         Mockito.when(bookService.getBooks()).thenReturn(booksList);
 
         //when & then
-        mockMvc.perform(MockMvcRequestBuilders.get("/books")                // [1]
+        mockMvc.perform(MockMvcRequestBuilders.get("/books")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().is(200))               // [2]
+                .andExpect(status().is(200))
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+    }
+
+    @Test
+    void shouldAddThreeBooks() throws Exception {
+        // given
+        List<BookDto> bookList = new ArrayList<>();
+        bookList.add(new BookDto("The Stand", "Stephen King"));
+        bookList.add(new BookDto("The Lord of the Rings", "J.R.R. Tolkien"));
+        bookList.add(new BookDto("Harry Potter and the Philosopher's Stone", "J.K. Rowling"));
+        Gson gson = new Gson();
+        String json;
+
+        // when & then
+        for (BookDto bookDto : bookList) {
+            json = gson.toJson(bookDto);
+            mockMvc.perform(MockMvcRequestBuilders.post("/books")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(json))
+                    .andExpect(MockMvcResultMatchers.status().isOk());
+            Mockito.verify(bookService, Mockito.times(1)).addBook(bookDto);
+        }
+        Mockito.verify(bookService, Mockito.times(3)).addBook(Mockito.any(BookDto.class));
     }
 }
