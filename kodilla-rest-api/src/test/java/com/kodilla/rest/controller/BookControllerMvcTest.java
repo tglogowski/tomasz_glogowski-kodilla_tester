@@ -45,4 +45,25 @@ public class BookControllerMvcTest {
                 .andExpect(status().is(200))
                 .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
     }
+    @Test
+    void shouldAddThreeBooks() throws Exception {
+        // given
+        List<BookDto> bookList = new ArrayList<>();
+        bookList.add(new BookDto("The Stand", "Stephen King"));
+        bookList.add(new BookDto("The Lord of the Rings", "J.R.R. Tolkien"));
+        bookList.add(new BookDto("Harry Potter and the Philosopher's Stone", "J.K. Rowling"));
+        Gson gson = new Gson();
+        String json;
+
+        // when & then
+        for (BookDto bookDto : bookList) {
+            json = gson.toJson(bookDto);
+            mockMvc.perform(MockMvcRequestBuilders.post("/books")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(json))
+                    .andExpect(MockMvcResultMatchers.status().isOk());
+            Mockito.verify(bookService, Mockito.times(1)).addBook(bookDto);
+        }
+        Mockito.verify(bookService, Mockito.times(3)).addBook(Mockito.any(BookDto.class));
+    }
 }
