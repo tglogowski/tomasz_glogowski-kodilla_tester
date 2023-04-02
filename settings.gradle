@@ -9,4 +9,6 @@ include 'kodilla-advanced-tests'
 include 'kodilla-spring-basic'
 include 'kodilla-spring-basic'
 include 'kodilla-rest-api'
+include 'kodilla-selenium'
+include 'kodilla-selenium'
 
