@@ -1,0 +1,7 @@
+input, expected
+NoteBook,2
+notebook,2
+noTeBOOK,2
+NOTEBOOK,2
+notebooK,2
+NoTEbOOk,2
